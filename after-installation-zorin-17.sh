@@ -341,6 +341,17 @@ fi
 
 
 
+## Download Postman
+if [ -e postman-10.22.10.deb ];
+then
+    echo "O arquivo  postman-10.22.10.deb  ja existe"
+else
+    echo -e "\n\n\n\n Postman"
+    wget https://github.com/lucgithub343/postman/releases/download/postman/postman-10.22.10.deb
+fi
+
+
+
 ## Download Spring Tool Suite
 if [ -e spring-tool-suite-4.21.0.deb ];
 then
@@ -668,6 +679,17 @@ echo -e "\n\n\n*****************************************************************
 
 
 
+echo -e "\n\n\n************************************************** INSTALANDO  PACOTES  FLATPACK *****************************************************"
+
+flatpak install flathub dev.aunetx.deezer -y
+flatpak install flathub org.gnome.Solanum -y
+flatpak install flathub com.spotify.Client -y
+
+echo "***********************************************************************************************************************************************"
+
+
+
+
 echo -e "\n\n\n************************************************** INSTALANDO  ARQUIVOS  .DEB ********************************************************"
 
 ## Tornando todos os arquivos .deb
@@ -721,6 +743,11 @@ sudo apt --fix-broken install -y
 sudo dpkg -i onlyoffice-desktopeditors_amd64.deb
 sudo apt --fix-broken install -y
 sudo sed -i '/Terminal=false/a StartupWMClass=DesktopEditors' /usr/share/applications/onlyoffice-desktopeditors.desktop
+
+
+## Postman
+sudo dpkg -i postman-10.22.10.deb
+sudo apt --fix-broken install -y
 
 
 ## Visual Studio Code
