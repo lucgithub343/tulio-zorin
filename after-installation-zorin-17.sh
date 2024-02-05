@@ -220,6 +220,17 @@ echo "**************************************************************************
 echo -e "\n\n\n************************************************** DOWNLOAD   DE  PROGRAMAS **********************************************************"
 
 
+## Download Android Studio
+if [ -e android-studio-2022.3.1.deb ];
+then
+    echo "O arquivo  android-studio-2022.3.1.deb  ja existe"
+else
+    echo -e "\n\n\n\n Android Studio"
+    wget https://github.com/lucgithub343/android-studio/releases/download/android-studio/android-studio-2022.3.1.deb
+fi
+
+
+
 ## Download Apache Netbeans
 if [ -e apache-netbeans_20-1_all.deb ];
 then
@@ -359,6 +370,17 @@ then
 else
     echo -e "\n\n\n\n Spring Tool Suite"
     wget https://github.com/lucgithub343/spring-tool-suite/releases/download/spring-tool-suite/spring-tool-suite-4.21.0.deb
+fi
+
+
+
+## Download StarUML
+if [ -e StarUML_5.1.0_amd64.deb ];
+then
+    echo "O arquivo  StarUML_5.1.0_amd64.deb  ja existe"
+else
+    echo -e "\n\n\n\n StarUML"
+    wget https://github.com/lucgithub343/starUML/releases/download/starUML/StarUML_5.1.0_amd64.deb
 fi
 
 
@@ -698,6 +720,11 @@ chmod +x *.deb
 
 
 
+## Android Studio
+sudo dpkg -i android-studio-2022.3.1.deb
+sudo apt --fix-broken install -y
+
+
 ## Atom
 sudo dpkg -i atom-amd64.deb
 sudo apt --fix-broken install -y
@@ -747,6 +774,11 @@ sudo sed -i '/Terminal=false/a StartupWMClass=DesktopEditors' /usr/share/applica
 
 ## Postman
 sudo dpkg -i postman-10.22.10.deb
+sudo apt --fix-broken install -y
+
+
+## Star UML
+sudo dpkg -i StarUML_5.1.0_amd64.deb
 sudo apt --fix-broken install -y
 
 
