@@ -635,10 +635,52 @@ sudo add-apt-repository ppa:savoury1/chromium -y
 sudo apt update -y
 sudo apt install chromium-browser -y
 
+## Removendo o Firefox Flatpak
+flatpak uninstall org.mozilla.firefox  -y
+
+## Instalando Firefox .deb
+sudo add-apt-repository ppa:mozillateam/ppa -y
+sudo apt update -y
+sudo apt install firefox -y
+
 ## Instalando SDKMAN
 curl -s https://get.sdkman.io | bash
 
 echo  "**********************************************************************************************************************************************"
+
+
+
+
+echo -e "\n\n\n********************************************** DESINSTALANDO  FIREFOX  SNAP  *********************************************************"
+
+## Removendo o Firefox snap
+sudo snap remove firefox
+
+
+## Colocando prioridade mais alta no Firefox feito por mim
+if [ -e /etc/apt/preferences.d/99mozillateamppa ];
+then
+    echo "Arquivo  /etc/apt/preferences.d/99mozillateamppa  ja existe*"
+else
+    sudo touch /etc/apt/preferences.d/99mozillateamppa
+
+    echo "Package: firefox*" | sudo tee -a /etc/apt/preferences.d/99mozillateamppa
+    echo "Pin: release o=LP-PPA-mozillateam" | sudo tee -a /etc/apt/preferences.d/99mozillateamppa
+    echo "Pin-Priority: 501" | sudo tee -a /etc/apt/preferences.d/99mozillateamppa
+
+    echo "" | sudo tee -a /etc/apt/preferences.d/99mozillateamppa
+
+    echo "Package: firefox*" | sudo tee -a /etc/apt/preferences.d/99mozillateamppa
+    echo "Pin: release o=Ubuntu" | sudo tee -a /etc/apt/preferences.d/99mozillateamppa
+    echo "Pin-Priority: -1" | sudo tee -a /etc/apt/preferences.d/99mozillateamppa
+fi
+
+
+sudo add-apt-repository ppa:mozillateam/ppa -y
+sudo apt update -y
+sudo apt install firefox -y
+
+echo -e "\n\n\n******************************************REINICIAR  O  COMPUTADOR*******************************************************************"
 
 
 
